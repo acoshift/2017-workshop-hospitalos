@@ -1,9 +1,14 @@
-const x = Object.freeze({
-  name: 'JavaScript'
+const express = require('express')
+
+const app = express()
+
+app.get('/', (req, resp) => {
+  resp.send('Hello')
 })
 
-x.name = 'PHP'
+app.all('/health', (req, resp) => {
+  // ping database
+  resp.send('ok')
+})
 
-console.log(x)
-
-
+app.listen(8080)
