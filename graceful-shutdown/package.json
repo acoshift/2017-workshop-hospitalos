@@ -1,0 +1,15 @@
+{
+  "name": "graceful-shutdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.1",
+    "express-graceful-shutdown": "0.0.3"
+  }
+}
