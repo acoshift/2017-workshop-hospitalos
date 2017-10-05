@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>Navbar</div>
+    <Navbar ref="navbar" />
     <router-link :to="{ name: 'Home' }">Home</router-link>
     <router-link :to="{ name: 'About', query: { name: 'test' } }">About</router-link>
     <router-view />
@@ -9,11 +9,13 @@
 </template>
 
 <script>
+import Navbar from './components/Navbar'
 import Item from './components/Item'
 
 export default {
   name: 'app',
   components: {
+    Navbar,
     Item
   },
   data () {
@@ -29,6 +31,9 @@ export default {
     setInterval(() => {
       this.list[0].price++
     }, 2000)
+  },
+  mounted () {
+    this.$refs.navbar.setTitle('My App')
   },
   computed: {
     totalPrice () {
@@ -49,9 +54,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import "./style.scss";
+
   .red {
-    color: red;
+    color: $primary-color;
   }
 </style>
-
