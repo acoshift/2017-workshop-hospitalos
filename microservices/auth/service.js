@@ -49,6 +49,8 @@ const revoke = (refreshToken) =>
   refreshTokens.remove(refreshToken)
 
 module.exports = {
+  generateRefreshToken,
+  generateAccessToken,
   tokenWithPassword,
   tokenWithRefreshToken,
   revoke
