@@ -2,10 +2,14 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const service = require('./service')
+const users = require('./user')
+const refreshTokens = require('./refresh_token')
 
 const app = express()
 
 app.use(bodyParser.json())
+
+const tokenWithPassword = service.tokenWithPassword(users, refreshTokens)
 
 app.post('/token', (req, res) => {
   if (!req.body) {

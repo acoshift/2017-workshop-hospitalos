@@ -5,5 +5,18 @@ steps:
       - -t
       - gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA
       - "."
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA
+  - name: gcr.io/cloud-builders/kubectl
+    args:
+      - set
+      - image
+      - deploy/myapp
+      - myapp=gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-sg-1'
 images:
   - gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA
